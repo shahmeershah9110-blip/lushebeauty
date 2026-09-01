@@ -10,10 +10,46 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
   </head>
+  <div class="cart-overlay" id="cartOverlay"></div>
+
+<aside class="shopping-cart" id="shoppingCart">
+  <div class="cart-header">
+    <h2>Your Cart 🛒</h2>
+    <button id="closeCart" class="close-cart">×</button>
+  </div>
+
+  <div id="cartItems" class="cart-items">
+    <p class="empty-cart">Your cart is empty.</p>
+  </div>
+
+  <div class="cart-summary">
+    <p>
+      <span>Subtotal</span>
+      <strong id="cartSubtotal">PKR 0</strong>
+    </p>
+
+    <p>
+      <span>Delivery Charges</span>
+      <strong>PKR 250</strong>
+    </p>
+
+    <p class="cart-total">
+      <span>Total</span>
+      <strong id="cartTotal">PKR 0</strong>
+    </p>
+
+    <button id="checkoutButton" class="checkout-button">
+      Place Order
+    </button>
+  </div>
+</aside>
   <body>
     <div class="announcement">Free beauty advice in our Instagram DMs ✦ Follow <a href="https://www.instagram.com/lushebeauty44/" target="_blank" rel="noreferrer">@lushebeauty44</a></div>
 
     <header class="site-header">
+      <button class="cart-button" id="cartButton" aria-label="Open shopping cart">
+  🛒 Cart <span id="cartCount">0</span>
+</button>
       <a class="brand" href="#top" aria-label="Lushé Beauty home">Lushé <span>Beauty</span></a>
       <button class="menu-button" aria-label="Open menu" aria-expanded="false">Menu</button>
       <nav aria-label="Main navigation">
