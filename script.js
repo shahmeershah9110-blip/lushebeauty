@@ -197,7 +197,51 @@ function changeQuantity(index, amount) {
     cart.splice(index, 1);
   }
 
+// PLACE ORDER ON WHATSAPP
+const checkoutButton = document.getElementById("checkoutButton");
 
+checkoutButton?.addEventListener("click", () => {
+
+  if (cart.length === 0) {
+    alert("Your cart is empty!");
+    return;
+  }
+
+  let subtotal = 0;
+
+  let orderMessage = "✨ *NEW ORDER - LUSHÉ BEAUTY* ✨\n\n";
+
+  orderMessage += "🛍️ *Order Details:*\n\n";
+
+  cart.forEach((item, index) => {
+    const itemTotal = item.price * item.quantity;
+
+    subtotal += itemTotal;
+
+    orderMessage +=
+      `${index + 1}. *${item.name}*\n` +
+      `Quantity: ${item.quantity}\n` +
+      `Price: PKR ${item.price.toLocaleString()}\n` +
+      `Item Total: PKR ${itemTotal.toLocaleString()}\n\n`;
+  });
+
+  const delivery = 250;
+  const total = subtotal + delivery;
+
+  orderMessage += "━━━━━━━━━━━━━━\n";
+  orderMessage += `💰 *Subtotal: PKR ${subtotal.toLocaleString()}*\n`;
+  orderMessage += `🚚 *Delivery Charges: PKR ${delivery}*\n`;
+  orderMessage += `💳 *TOTAL: PKR ${total.toLocaleString()}*\n`;
+  orderMessage += "━━━━━━━━━━━━━━\n\n";
+  orderMessage += "Hello Lushé Beauty! I would like to place this order. 💖";
+
+  const whatsappNumber = "923315370760";
+
+  const whatsappURL =
+    `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(orderMessage)}`;
+
+  window.open(whatsappURL, "_blank");
+});
   updateCart();
 }
 
